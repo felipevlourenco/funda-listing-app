@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
+
   runtimeConfig: {
     api: {
       key: process.env.API_KEY,
@@ -14,7 +15,10 @@ export default defineNuxtConfig({
       },
     },
   },
+
   app: {
     head: { title: 'Funda - Listing App', htmlAttrs: { lang: 'en' } },
   },
+
+  modules: ['@nuxtjs/leaflet'],
 });

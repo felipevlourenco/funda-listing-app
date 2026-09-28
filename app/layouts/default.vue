@@ -1,10 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const route = useRoute();
+</script>
 
 <template>
   <div>
     <header>
       <div class="header-content">
-        <span>Funda Listing App</span>
+        <span v-if="route.name === 'index'">Funda Listing App</span>
+        <button v-else @click="$router.back()">Back</button>
       </div>
     </header>
     <main>
@@ -23,9 +26,9 @@ header {
   position: sticky;
   top: 0px;
   z-index: 20;
-  background: var(--header, rgba(250, 249, 247, 0.92));
+  background: #faf9f7eb;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line, #e7e4df);
+  border-bottom: 1px solid #e7e4df;
 }
 
 .header-content {
