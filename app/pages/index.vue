@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Object as Property } from '#shared/types/properties';
+// import Card from '~/components/properties/Card.vue';
 
 const { data: items } = await useFetch<Property[]>('/api/properties');
 </script>
@@ -9,8 +10,9 @@ const { data: items } = await useFetch<Property[]>('/api/properties');
     <nav>
       <ul v-if="items && items.length > 0">
         <li v-for="item in items" :key="item.Id">
-          {{ item.Adres }} - {{ item.Prijs.Koopprijs }} -
-          {{ item.Woonoppervlakte }} m²
+          <!-- {{ item.Adres }} - {{ item.Prijs.Koopprijs }} -
+          {{ item.Woonoppervlakte }} m² -->
+          <PropertiesCard :property="item" />
           <NuxtLink :to="`/properties/${item.Id}`">View</NuxtLink>
         </li>
       </ul>

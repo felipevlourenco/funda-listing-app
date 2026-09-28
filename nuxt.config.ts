@@ -7,6 +7,8 @@ export default defineNuxtConfig({
       key: process.env.API_KEY,
     },
     public: {
+      locale: process.env.LOCALE || 'en-US',
+      currency: process.env.CURRENCY || 'EUR',
       api: {
         baseUrl: process.env.API_BASE_URL,
       },
