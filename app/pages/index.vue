@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import type { Object as Property } from '#shared/types/properties';
-// import Card from '~/components/properties/Card.vue';
 
 const { data: items } = await useFetch<Property[]>('/api/properties');
 </script>
 
 <template>
-  <header>
-    <nav>
-      <ul v-if="items && items.length > 0">
-        <li v-for="item in items" :key="item.Id">
-          <!-- {{ item.Adres }} - {{ item.Prijs.Koopprijs }} -
-          {{ item.Woonoppervlakte }} m² -->
-          <PropertiesCard :property="item" />
-          <NuxtLink :to="`/properties/${item.Id}`">View</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <ul v-if="items && items.length > 0">
+    <li v-for="item in items" :key="item.Id">
+      <PropertiesCard :property="item" />
+    </li>
+  </ul>
 </template>
+
+<style>
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  gap: 1rem;
+}
+</style>
