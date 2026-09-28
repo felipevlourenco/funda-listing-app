@@ -1,7 +1,10 @@
 export default defineEventHandler(async (event) => {
-  const { api } = useRuntimeConfig(event);
+  const {
+    api,
+    public: { api: publicApi },
+  } = useRuntimeConfig(event);
 
-  if (!api.baseUrl || !api.key) {
+  if (!publicApi.baseUrl || !api.key) {
     throw createError({
       statusCode: 500,
       statusMessage:
@@ -9,8 +12,8 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const response = await $fetch<ListingResponse>(
-    `${api.baseUrl}${api.key}?type=koop`,
+  const response = await $fetch<Properties>(
+    `${publicApi.baseUrl}${api.key}?type=koop`,
   );
 
   return response.Objects;

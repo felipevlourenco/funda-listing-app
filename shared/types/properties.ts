@@ -1,4 +1,4 @@
-export interface ListingResponse {
+export interface Properties {
   AccountStatus: number;
   EmailNotConfirmed: boolean;
   ValidationFailed: boolean;

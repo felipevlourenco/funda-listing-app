@@ -5,7 +5,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     api: {
       key: process.env.API_KEY,
-      baseUrl: process.env.API_BASE_URL,
+    },
+    public: {
+      api: {
+        baseUrl: process.env.API_BASE_URL,
+      },
     },
   },
   app: {
