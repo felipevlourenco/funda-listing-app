@@ -23,9 +23,9 @@ const listing = computed(() =>
 
       <label class="sort-control">
         <span class="sort-label">Sort</span>
-        <span class="sort-value"
-          ><span class="sc-interp">{{ getSortByLabel(sort) }}</span></span
-        >
+        <span class="sort-value">
+          <span class="sc-interp">{{ getSortByLabel(sort) }}</span>
+        </span>
         <span class="sort-indicator">▼</span>
         <select v-model="sort" aria-label="Sort listings" class="sort-select">
           <option value="newest">Newest</option>

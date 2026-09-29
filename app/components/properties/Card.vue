@@ -24,15 +24,15 @@ const props = defineProps<{ property: Card }>();
         </h4>
         <span class="property-street">{{ props.property.Adres }}</span>
         <div class="property-postal">
-          <span
-            >{{ props.property.Postcode }} {{ props.property.Woonplaats }}</span
-          >
+          <span>
+            {{ props.property.Postcode }} {{ props.property.Woonplaats }}
+          </span>
         </div>
         <div class="property-meta">
-          <span
-            >{{ props.property.Woonoppervlakte }} m² ·
-            {{ props.property.AantalKamers }} kamers</span
-          >
+          <span>
+            {{ props.property.Woonoppervlakte }} m² ·
+            {{ props.property.AantalKamers }} kamers
+          </span>
         </div>
       </div>
     </NuxtLink>

@@ -39,12 +39,12 @@ const selectMedia = (mediaItem: string) => {
       </div>
     </div>
     <span>{{ property?.Adres }}</span>
-    <span> {{ property?.Postcode }} {{ property?.Plaats }}</span>
-    <span>{{
-      formatPrice({ price: property?.Prijs.Koopprijs, locale, currency })
-    }}</span>
-    <span
-      >{{
+    <span>{{ property?.Postcode }} {{ property?.Plaats }}</span>
+    <span>
+      {{ formatPrice({ price: property?.Prijs.Koopprijs, locale, currency }) }}
+    </span>
+    <span>
+      {{
         formatPrice({
           price: calculatePricePerSquareMeter({
             price: property?.Prijs.Koopprijs,
@@ -54,8 +54,8 @@ const selectMedia = (mediaItem: string) => {
           currency,
         })
       }}
-      per m²</span
-    >
+      per m²
+    </span>
     <!-- Key facts -->
     <div></div>
     <!-- Description -->
