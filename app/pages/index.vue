@@ -61,7 +61,7 @@ const listing = computed(() =>
 
 .listing-title {
   margin: 0;
-  font-size: clamp(26px, 4vw, 34px);
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;

@@ -17,8 +17,6 @@ const media = getMediaArray({ property: property.value });
       <div class="property-sections">
         <PropertiesSummary :property="property" />
         <PropertiesKeyFacts :property="property" />
-        <!-- Description -->
-        <div></div>
       </div>
       <PropertiesLocation :property="property" />
     </div>

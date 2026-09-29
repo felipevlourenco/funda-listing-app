@@ -6,6 +6,7 @@ withDefaults(
   }>(),
   {
     type: 'button',
+    click: () => {},
   },
 );
 </script>
