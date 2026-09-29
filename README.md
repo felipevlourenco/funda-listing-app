@@ -73,8 +73,8 @@ Things I would do next, roughly in priority order:
 **Data and performance**
 
 - **Pagination:** the feed returns 15 of ~80,000 listings per page (`Paging`, `TotaalAantalObjecten`). Only the first page is shown, and the "results" count is the page size, not the real total. Add "load more" or page links driven by a `?page=` query param.
-- **Caching:** API responses are fetched on every request. Cache them on the server (`cachedEventHandler` or `routeRules` with `swr`) so the list and details are served fast and the upstream API is hit less. Listings change slowly, so a few minutes is enough.
-- **Images:** use `@nuxt/image` for resizing, modern formats and `srcset`, and add `loading="lazy"` plus explicit width/height to avoid layout shift.
+- **Caching:** API responses are fetched on every request. Cache them on the server (e.g. `cachedEventHandler`) so the list and details are served fast and the upstream API is hit less. Listings change slowly, so a few minutes is enough.
+- **Images:** use `@nuxt/image` for resizing, and explicit width/height to avoid layout shift.
 
 **Features**
 
