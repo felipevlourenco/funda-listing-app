@@ -12,19 +12,6 @@ const center = ref(getPropertyLocation({ property: props.property }));
     <h2 class="property-location-title">Location</h2>
     <div class="map-container">
       <LMap :zoom="zoom" :center="center" :use-global-leaflet="false">
-        <LControlLayers position="topright" />
-        <!-- <LTileLayer
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
-          attribution="Tiles &amp;copy; Esri"
-          layer-type="base"
-          name="Light"
-        />
-        <LTileLayer
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
-          attribution="Tiles &amp;copy; Esri"
-          layer-type="base"
-          name="Dark"
-        /> -->
         <LTileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&amp;copy; OpenStreetMap contributors"
@@ -37,7 +24,7 @@ const center = ref(getPropertyLocation({ property: props.property }));
   </aside>
 </template>
 
-<style>
+<style scoped>
 .property-location {
   flex: 1 1 320px;
   min-width: 0px;
@@ -47,6 +34,7 @@ const center = ref(getPropertyLocation({ property: props.property }));
 }
 
 .property-location-title {
+  color: #000000;
   margin: 0px;
   font-size: 20px;
   font-weight: 700;
@@ -55,7 +43,7 @@ const center = ref(getPropertyLocation({ property: props.property }));
 
 .map-container {
   height: 400px;
-  width: calc(100vw - 2rem);
+  width: 100%;
   position: relative;
   z-index: 0;
   border-radius: 14px;

@@ -90,3 +90,21 @@ export function getSortByLabel(sortBy: SortBy): string {
       return '';
   }
 }
+
+export function formatDate(dateString: string, locale: string): string | null {
+  const timestamp = dateString.match(
+    /^\/Date\((-?\d+)(?:[+-]\d{4})?\)\/$/,
+  )?.[1];
+
+  if (!timestamp) {
+    return null;
+  }
+
+  const date = new Date(Number(timestamp));
+
+  if (Number.isNaN(date.getTime())) {
+    return null;
+  }
+
+  return new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(date);
+}
