@@ -11,6 +11,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -21,10 +23,14 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
+    "@nuxt/test-utils": "^4.3.2",
     "@types/node": "^26.6.3",
+    "@vue/test-utils": "^2.5.1",
     "eslint": "^10.11.0",
     "eslint-config-prettier": "^10.1.8",
+    "happy-dom": "^20.14.5",
     "prettier": "^3.9.9",
-    "typescript": "^6"
+    "typescript": "^6",
+    "vitest": "^5.0.2"
   }
 }
