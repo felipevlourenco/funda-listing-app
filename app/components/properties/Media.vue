@@ -1,10 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{ media: string[] }>();
+const props = defineProps<{ media: string[]; address?: string }>();
 
-const selectedMedia = ref(props.media[0] || null);
+const selectedIndex = ref(0);
+const selectedMedia = computed(() => props.media[selectedIndex.value]);
+const photoLabel = (index: number) =>
+  `Photo ${index + 1} of ${props.media.length}`;
 
-const selectMedia = (mediaItem: string) => {
-  selectedMedia.value = mediaItem;
+const selectMedia = (index: number) => {
+  selectedIndex.value = Math.min(Math.max(index, 0), props.media.length - 1);
 };
 </script>
 
@@ -13,43 +16,41 @@ const selectMedia = (mediaItem: string) => {
     <img
       v-if="selectedMedia"
       :src="selectedMedia"
-      alt="Selected Property Image"
+      :alt="`${address ?? 'Property'}, ${photoLabel(selectedIndex).toLowerCase()}`"
       class="selected-media"
     />
     <button
+      type="button"
       class="carousel-button left"
-      @click="
-        selectMedia(
-          media[Math.max(0, media.indexOf(selectedMedia ?? '') - 1)] ?? '',
-        )
-      "
+      aria-label="Previous photo"
+      @click="selectMedia(selectedIndex - 1)"
     >
       ←
     </button>
     <button
+      type="button"
       class="carousel-button right"
-      @click="
-        selectMedia(
-          media[
-            Math.min(media.length - 1, media.indexOf(selectedMedia ?? '') + 1)
-          ] ?? '',
-        )
-      "
+      aria-label="Next photo"
+      @click="selectMedia(selectedIndex + 1)"
     >
       →
     </button>
     <div v-if="media.length > 1" class="property-carousel">
-      <img
+      <button
         v-for="(item, index) in media"
-        :key="index"
-        :src="item"
+        :key="item"
+        type="button"
         :class="{
           'property-carousel-item': true,
-          selected: selectedMedia === item,
+          selected: selectedIndex === index,
         }"
-        alt="Property Image"
-        @click="selectMedia(item)"
-      />
+        :aria-label="`Show ${photoLabel(index).toLowerCase()}`"
+        :aria-current="selectedIndex === index"
+        @click="selectMedia(index)"
+      >
+        <!-- Decorative: the button already carries the label -->
+        <img :src="item" alt="" />
+      </button>
     </div>
   </div>
 </template>
@@ -117,20 +118,27 @@ const selectMedia = (mediaItem: string) => {
 }
 
 .property-carousel-item {
-  max-width: 100px;
+  flex: 0 0 100px;
   aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 2px solid transparent;
   border-radius: 10px;
-  padding: 0px;
+  overflow: hidden;
+  background: none;
   cursor: pointer;
-  opacity: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0.7;
 }
 
-.selected {
-  border: 2px solid rgb(29, 28, 26);
+.property-carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.property-carousel-item.selected {
+  border-color: rgb(29, 28, 26);
   opacity: 1;
 }
 </style>

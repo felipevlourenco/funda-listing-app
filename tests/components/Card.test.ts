@@ -30,5 +30,6 @@ describe('PropertiesCard', () => {
 
     expect(wrapper.find('a').attributes('href')).toBe('/properties/abc-123');
     expect(wrapper.find('img').attributes('src')).toBe(property.Foto);
+    expect(wrapper.find('img').attributes('alt')).toBe('Photo of Damrak 1');
   });
 });

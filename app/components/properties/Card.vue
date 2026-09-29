@@ -11,7 +11,10 @@ const props = defineProps<{ property: Card }>();
 <template>
   <article>
     <NuxtLink :to="`/properties/${props.property.Id}`">
-      <img :src="props.property.Foto" alt="Property Image" />
+      <img
+        :src="props.property.Foto"
+        :alt="`Photo of ${props.property.Adres}`"
+      />
       <div class="property-details">
         <h4 class="property-price">
           {{

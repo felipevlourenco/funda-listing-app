@@ -36,7 +36,11 @@ const media = getMediaArray({ property: property.value });
 
 <template>
   <div v-if="property" class="property-detail">
-    <PropertiesMedia v-if="media.length > 0" :media="media" />
+    <PropertiesMedia
+      v-if="media.length > 0"
+      :media="media"
+      :address="property.Adres"
+    />
     <div class="property-info">
       <div class="property-sections">
         <PropertiesSummary :property="property" />
