@@ -12,7 +12,7 @@ A Nuxt 4 app that lists homes for sale and shows a detail page for each one, wit
 ## Install
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/felipevlourenco/funda-listing-app
 cd funda-listing-app
 yarn install
 cp .env.example .env
