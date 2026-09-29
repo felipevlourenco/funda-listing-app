@@ -25,9 +25,9 @@ withDefaults(
   gap: 6px;
   min-height: 44px;
   padding: 0 16px;
-  border: 1px solid var(--line2, #dcd8d1);
+  border: 1px solid #dcd8d1;
   border-radius: 999px;
-  background: var(--surface, #fff);
+  background: #fff;
   color: inherit;
   font: inherit;
   font-size: 14px;

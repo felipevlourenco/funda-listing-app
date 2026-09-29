@@ -42,11 +42,11 @@ const facts = computed(() => [
 .key-facts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  border-top: 1px solid var(--line, #e7e4df);
-  border-left: 1px solid var(--line, #e7e4df);
+  border-top: 1px solid #e7e4df;
+  border-left: 1px solid #e7e4df;
   border-radius: 12px;
   overflow: hidden;
-  background: var(--surface, #fff);
+  background: #fff;
 }
 
 .key-fact {
@@ -54,12 +54,12 @@ const facts = computed(() => [
   flex-direction: column;
   gap: 4px;
   padding: 14px 16px;
-  border-right: 1px solid var(--line, #e7e4df);
-  border-bottom: 1px solid var(--line, #e7e4df);
+  border-right: 1px solid #e7e4df;
+  border-bottom: 1px solid #e7e4df;
 }
 
 .key-fact-label {
   font-size: 13px;
-  color: var(--muted, #6b6862);
+  color: #6b6862;
 }
 </style>

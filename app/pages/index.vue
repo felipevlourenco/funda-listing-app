@@ -69,7 +69,7 @@ const listing = computed(() =>
 
 .listing-count {
   font-size: 15px;
-  color: var(--muted, #6b6862);
+  color: #6b6862;
 }
 
 .sort-control {
@@ -79,16 +79,16 @@ const listing = computed(() =>
   gap: 6px;
   height: 44px;
   padding: 0 16px;
-  border: 1px solid var(--line2, #dcd8d1);
+  border: 1px solid #dcd8d1;
   border-radius: 999px;
   font-size: 14px;
-  background: var(--surface, #fff);
+  background: #fff;
   cursor: pointer;
 }
 
 .sort-label,
 .sort-indicator {
-  color: var(--muted, #6b6862);
+  color: #6b6862;
 }
 
 .sort-value {

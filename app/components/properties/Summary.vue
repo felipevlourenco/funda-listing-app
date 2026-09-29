@@ -60,7 +60,7 @@ const {
 .listing-date {
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent, #2f6b4f);
+  color: #2f6b4f;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -75,7 +75,7 @@ const {
 
 .property-location {
   font-size: 16px;
-  color: var(--muted, #6b6862);
+  color: #6b6862;
 }
 
 .property-price {
@@ -87,6 +87,6 @@ const {
 
 .price-per-area {
   font-size: 14px;
-  color: var(--muted, #6b6862);
+  color: #6b6862;
 }
 </style>
