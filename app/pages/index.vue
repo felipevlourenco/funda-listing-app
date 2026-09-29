@@ -17,14 +17,14 @@ const listing = computed(() =>
       <div class="listing-heading">
         <h1 class="listing-title">Homes for sale</h1>
         <span class="listing-count">
-          <span class="sc-interp">{{ items?.length || 0 }} results</span>
+          <span>{{ items?.length || 0 }} results</span>
         </span>
       </div>
 
       <label class="sort-control">
         <span class="sort-label">Sort</span>
         <span class="sort-value">
-          <span class="sc-interp">{{ getSortByLabel(sort) }}</span>
+          <span>{{ getSortByLabel(sort) }}</span>
         </span>
         <span class="sort-indicator">▼</span>
         <select v-model="sort" aria-label="Sort listings" class="sort-select">

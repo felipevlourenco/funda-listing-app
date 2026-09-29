@@ -45,6 +45,10 @@ article {
   padding-bottom: 16px;
   border-bottom: 1px solid #e7e4df;
 
+  @media (min-width: 900px) {
+    border-bottom: none;
+  }
+
   * {
     text-decoration: none;
     color: inherit;
@@ -61,8 +65,6 @@ a {
 }
 
 img {
-  /* width: 100%;
-  height: auto; */
   border-radius: 12px;
   aspect-ratio: 1 / 1;
   height: 120px;

@@ -1,5 +1,11 @@
 <script setup lang="ts">
 const route = useRoute();
+
+const handleBackClick = () => {
+  if (route.name !== 'index') {
+    navigateTo({ name: 'index' });
+  }
+};
 </script>
 
 <template>
@@ -7,7 +13,9 @@ const route = useRoute();
     <header>
       <div class="header-content">
         <span v-if="route.name === 'index'">Funda Listing App</span>
-        <button v-else @click="$router.back()">Back</button>
+        <SharedButton v-else @click="handleBackClick">
+          ← Back to listings
+        </SharedButton>
       </div>
     </header>
     <main>
