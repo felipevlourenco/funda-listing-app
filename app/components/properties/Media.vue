@@ -49,7 +49,7 @@ const selectMedia = (index: number) => {
         @click="selectMedia(index)"
       >
         <!-- Decorative: the button already carries the label -->
-        <img :src="item" alt="" />
+        <img :src="item" alt="" loading="lazy" />
       </button>
     </div>
   </div>
