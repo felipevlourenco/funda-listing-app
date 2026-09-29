@@ -40,6 +40,9 @@ const listing = computed(() =>
         <PropertiesCard :property="item" />
       </li>
     </ul>
+    <div v-else>
+      <p>No properties found.</p>
+    </div>
   </div>
 </template>
 

@@ -3,15 +3,17 @@ import type { Property } from '#shared/types/property';
 
 const route = useRoute();
 
-const { data: property } = await useFetch<Property>(
-  `/api/properties/${route.params.id}`,
-);
+const {
+  data: property,
+  pending,
+  error,
+} = await useFetch<Property>(`/api/properties/${route.params.id}`);
 
 const media = getMediaArray({ property: property.value });
 </script>
 
 <template>
-  <div class="property-detail">
+  <div v-if="property" class="property-detail">
     <PropertiesMedia v-if="media.length > 0" :media="media" />
     <div class="property-info">
       <div class="property-sections">
@@ -20,6 +22,12 @@ const media = getMediaArray({ property: property.value });
       </div>
       <PropertiesLocation :property="property" />
     </div>
+  </div>
+  <div v-else-if="pending">
+    <p>Loading property details...</p>
+  </div>
+  <div v-else-if="error">
+    <p>Error loading property details.</p>
   </div>
 </template>
 
