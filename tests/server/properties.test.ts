@@ -63,6 +63,19 @@ describe('GET /api/properties', () => {
 });
 
 describe('GET /api/properties/:id', () => {
+  it.each([
+    [404, 404],
+    [400, 404],
+    [500, 502],
+    [undefined, 502],
+  ])('maps an upstream %s to a %s', async (upstream, expected) => {
+    $fetch.mockRejectedValue(
+      Object.assign(new Error('x'), { statusCode: upstream }),
+    );
+
+    await expect(detail({})).rejects.toMatchObject({ statusCode: expected });
+  });
+
   it('fetches the detail for the route id', async () => {
     const property = { Id: '42' };
     getRouterParam.mockReturnValue('42');

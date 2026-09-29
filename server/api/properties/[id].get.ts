@@ -1,3 +1,5 @@
+// Proxies a single listing from the Funda feed (server-side, keeps the key
+// private). Responses are not cached yet, see "Further improvements" in the README.
 export default defineEventHandler(async (event) => {
   const {
     api,
@@ -13,5 +15,21 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return $fetch<Property>(`${publicApi.baseUrl}detail/${api.key}/koop/${id}/`);
+  try {
+    return await $fetch<Property>(
+      `${publicApi.baseUrl}detail/${api.key}/koop/${id}/`,
+    );
+  } catch (error) {
+    // The feed answers 404 for an unknown id and 400 for a malformed one; both
+    // mean "not found" to the user. Anything else is an upstream failure.
+    const status = (error as { statusCode?: number }).statusCode;
+
+    throw createError({
+      statusCode: status === 400 || status === 404 ? 404 : 502,
+      statusMessage:
+        status === 400 || status === 404
+          ? 'Property not found'
+          : 'Could not load the property',
+    });
+  }
 });

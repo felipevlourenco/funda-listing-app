@@ -91,6 +91,9 @@ export function getSortByLabel(sortBy: SortBy): string {
   }
 }
 
+// The feed sends dates in the .NET JSON format, e.g. "/Date(1710460800000)/" or
+// "/Date(1710460800000+0100)/": epoch milliseconds, with an optional offset that
+// we ignore since we only show the date.
 export function formatDate(dateString: string, locale: string): string | null {
   const timestamp = dateString.match(
     /^\/Date\((-?\d+)(?:[+-]\d{4})?\)\/$/,

@@ -4,10 +4,32 @@ import type { Property } from '#shared/types/property';
 const route = useRoute();
 
 const {
-  data: property,
-  pending,
-  error,
-} = await useFetch<Property>(`/api/properties/${route.params.id}`);
+  public: { locale, currency },
+} = useRuntimeConfig();
+
+const { data: property, error } = await useFetch<Property>(
+  `/api/properties/${route.params.id}`,
+);
+
+// Render Nuxt's error page with the real status (404 for an unknown listing).
+if (error.value) {
+  throw createError({
+    statusCode: error.value.statusCode,
+    statusMessage: error.value.statusMessage,
+    fatal: true,
+  });
+}
+
+useSeoMeta({
+  title: () => `${property.value?.Adres} | Funda Listing App`,
+  description: () =>
+    `${property.value?.Adres}, ${property.value?.Plaats}: ${formatPrice({
+      price: property.value?.Prijs.Koopprijs,
+      locale,
+      currency,
+    })}`,
+  ogImage: () => property.value?.['Media-Foto']?.[0],
+});
 
 const media = getMediaArray({ property: property.value });
 </script>
@@ -22,12 +44,6 @@ const media = getMediaArray({ property: property.value });
       </div>
       <PropertiesLocation :property="property" />
     </div>
-  </div>
-  <div v-else-if="pending">
-    <p>Loading property details...</p>
-  </div>
-  <div v-else-if="error">
-    <p>Error loading property details.</p>
   </div>
 </template>
 

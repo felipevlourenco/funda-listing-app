@@ -4,6 +4,8 @@ import type { SortBy } from '~/types';
 
 const { data: items } = await useFetch<Property[]>('/api/properties');
 
+useSeoMeta({ title: 'Homes for sale | Funda Listing App' });
+
 const sort = ref<SortBy>('newest');
 
 const listing = computed(() =>

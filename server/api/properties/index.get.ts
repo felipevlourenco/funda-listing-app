@@ -1,3 +1,8 @@
+// Proxies the Funda listings feed so the API key stays on the server and never
+// reaches the browser.
+// The feed returns 15 of ~80k listings per page (see `Paging`); we only return
+// the first page. Pagination and caching are listed in the README under
+// "Further improvements".
 export default defineEventHandler(async (event) => {
   const {
     api,

@@ -2,6 +2,8 @@
 
 A Nuxt 4 app that lists homes for sale and shows a detail page for each one, with a photo carousel and a map.
 
+**Live demo:** https://funda-listing-app.vercel.app/
+
 ## Requirements
 
 - Node.js 20.19 or newer
@@ -16,7 +18,12 @@ yarn install
 cp .env.example .env
 ```
 
-Then fill in `API_BASE_URL` and `API_KEY` in `.env`.
+Then fill in `API_BASE_URL` and `API_KEY` in `.env`:
+
+- `API_BASE_URL`: `https://partnerapi.funda.nl/feeds/Aanbod.svc/json/`
+- `API_KEY`: the temporary key from the Funda assignment brief (it is not committed to the repo)
+
+The key is only read on the server (`server/api/properties`), so it is never sent to the browser. When deploying (e.g. on Vercel), set the same variables in the project's environment settings.
 
 | Variable       | Description                                                       |
 | -------------- | ----------------------------------------------------------------- |
@@ -58,3 +65,26 @@ server/api/   API routes that proxy the listing API
 shared/types/ TypeScript types shared by app and server
 tests/        Unit tests (components, utils, server)
 ```
+
+## Further improvements
+
+Things I would do next, roughly in priority order:
+
+**Data and performance**
+
+- **Pagination:** the feed returns 15 of ~80,000 listings per page (`Paging`, `TotaalAantalObjecten`). Only the first page is shown, and the "results" count is the page size, not the real total. Add "load more" or page links driven by a `?page=` query param.
+- **Caching:** API responses are fetched on every request. Cache them on the server (`cachedEventHandler` or `routeRules` with `swr`) so the list and details are served fast and the upstream API is hit less. Listings change slowly, so a few minutes is enough.
+- **Images:** use `@nuxt/image` for resizing, modern formats and `srcset`, and add `loading="lazy"` plus explicit width/height to avoid layout shift.
+
+**Features**
+
+- **Search and filters:** price range, city, rooms and living area, kept in the URL so results can be shared.
+- **Sort in the URL:** the sort selection is local state and is lost on navigation.
+- **Richer details page:** show the description (`Omschrijving`), features and agent info, which are in the data but not displayed yet.
+- **JSON-LD** Add JSON-LD structured data for SEO.
+
+**Quality**
+
+- **Loading and error states:** skeleton placeholders, a retry action, and a custom error page.
+- **Tests and CI:** add end-to-end tests (Playwright) and run lint, format and tests in CI.
+- **i18n:** the UI copy is English while the data is Dutch; move strings to `@nuxtjs/i18n`.
