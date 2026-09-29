@@ -1,4 +1,4 @@
-import type { Object as Property } from '#shared/types/properties';
+import type { PropertyObject as Property } from '#shared/types/properties';
 
 export type Card = Pick<
   Property,

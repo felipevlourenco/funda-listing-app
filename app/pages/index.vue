@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Object as Property } from '#shared/types/properties';
+import type { PropertyObject as Property } from '#shared/types/properties';
 
 const { data: items } = await useFetch<Property[]>('/api/properties');
 </script>

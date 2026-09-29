@@ -5,7 +5,7 @@ export interface Properties {
   ValidationReport: null;
   Website: number;
   Metadata: Metadata;
-  Objects: Object[];
+  Objects: PropertyObject[];
   Paging: Paging;
   TotaalAantalObjecten: number;
 }
@@ -16,7 +16,7 @@ export interface Metadata {
   Titel: string;
 }
 
-export interface Object {
+export interface PropertyObject {
   AangebodenSindsTekst: AangebodenSindsTekst;
   AanmeldDatum: AanmeldDatum;
   AantalBeschikbaar: null;
@@ -68,7 +68,7 @@ export interface Object {
   Oppervlakte: number;
   Perceeloppervlakte: number;
   Postcode: string;
-  Prijs: Prijs;
+  Prijs: ListingPrijs;
   PrijsGeformatteerdHtml: string;
   PrijsGeformatteerdTextHuur: string;
   PrijsGeformatteerdTextKoop: string;
@@ -120,7 +120,7 @@ export enum KoopprijsFormaat {
   KoopPrijsKostenKoperKort = '<[KoopPrijs]> <{kosten koper|kort}>',
 }
 
-export interface Prijs {
+export interface ListingPrijs {
   GeenExtraKosten: boolean;
   HuurAbbreviation: string;
   Huurprijs: null;
