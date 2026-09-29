@@ -26,7 +26,7 @@ export interface PropertyObject {
   Adres: string;
   Afstand: number;
   BronCode: BronCode;
-  ChildrenObjects: any[];
+  ChildrenObjects: unknown[];
   DatumAanvaarding: null;
   DatumOndertekeningAkte: null;
   Foto: string;
@@ -165,7 +165,7 @@ export interface Project {
   MinWoonoppervlakte: null;
   Naam: null;
   Omschrijving: null;
-  OpenHuizen: any[];
+  OpenHuizen: unknown[];
   Plaats: null;
   Prijs: null;
   PrijsGeformatteerd: null;

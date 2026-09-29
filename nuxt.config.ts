@@ -20,5 +20,5 @@ export default defineNuxtConfig({
     head: { title: 'Funda - Listing App', htmlAttrs: { lang: 'en' } },
   },
 
-  modules: ['@nuxtjs/leaflet'],
+  modules: ['@nuxtjs/leaflet', '@nuxt/eslint'],
 });

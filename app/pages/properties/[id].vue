@@ -6,7 +6,7 @@ const {
   public: { locale, currency },
 } = useRuntimeConfig();
 
-const { data: property, error } = await useFetch<Property>(
+const { data: property } = await useFetch<Property>(
   `/api/properties/${route.params.id}`,
 );
 
@@ -32,9 +32,9 @@ const selectMedia = (mediaItem: string) => {
           v-for="(item, index) in media"
           :key="index"
           :src="item"
-          @click="selectMedia(item)"
           class="property-carousel-item"
           alt="Property Image"
+          @click="selectMedia(item)"
         />
       </div>
     </div>

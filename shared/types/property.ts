@@ -58,7 +58,7 @@ export interface Property {
   Makelaar: string;
   MakelaarId: number;
   MakelaarTelefoon: string;
-  MedeAanbieders: any[];
+  MedeAanbieders: unknown[];
   Media: Media[];
   'Media-Foto': string[];
   MobileURL: string;

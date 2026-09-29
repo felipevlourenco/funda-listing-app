@@ -12,33 +12,35 @@ const listing = computed(() =>
 </script>
 
 <template>
-  <div class="listing-header">
-    <div class="listing-heading">
-      <h1 class="listing-title">Homes for sale</h1>
-      <span class="listing-count">
-        <span class="sc-interp">{{ items?.length || 0 }} results</span>
-      </span>
-    </div>
+  <div>
+    <div class="listing-header">
+      <div class="listing-heading">
+        <h1 class="listing-title">Homes for sale</h1>
+        <span class="listing-count">
+          <span class="sc-interp">{{ items?.length || 0 }} results</span>
+        </span>
+      </div>
 
-    <label class="sort-control">
-      <span class="sort-label">Sort</span>
-      <span class="sort-value"
-        ><span class="sc-interp">{{ getSortByLabel(sort) }}</span></span
-      >
-      <span class="sort-indicator">▼</span>
-      <select v-model="sort" aria-label="Sort listings" class="sort-select">
-        <option value="newest">Newest</option>
-        <option value="priceAsc">Price: low to high</option>
-        <option value="priceDesc">Price: high to low</option>
-        <option value="areaDesc">Largest first</option>
-      </select>
-    </label>
+      <label class="sort-control">
+        <span class="sort-label">Sort</span>
+        <span class="sort-value"
+          ><span class="sc-interp">{{ getSortByLabel(sort) }}</span></span
+        >
+        <span class="sort-indicator">▼</span>
+        <select v-model="sort" aria-label="Sort listings" class="sort-select">
+          <option value="newest">Newest</option>
+          <option value="priceAsc">Price: low to high</option>
+          <option value="priceDesc">Price: high to low</option>
+          <option value="areaDesc">Largest first</option>
+        </select>
+      </label>
+    </div>
+    <ul v-if="listing.length > 0" class="property-list">
+      <li v-for="item in listing" :key="item.Id">
+        <PropertiesCard :property="item" />
+      </li>
+    </ul>
   </div>
-  <ul v-if="listing.length > 0" class="property-list">
-    <li v-for="item in listing" :key="item.Id">
-      <PropertiesCard :property="item" />
-    </li>
-  </ul>
 </template>
 
 <style scoped>
