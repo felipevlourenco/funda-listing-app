@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Card } from '~/types/card';
-
-const props = defineProps<{ property: Card }>();
+import type { Card } from '~/types';
 
 const {
   public: { locale, currency },
 } = useRuntimeConfig();
+
+const props = defineProps<{ property: Card }>();
 </script>
 
 <template>
@@ -54,6 +54,10 @@ article {
 a {
   display: flex;
   gap: 1rem;
+
+  @media (min-width: 900px) {
+    flex-direction: column;
+  }
 }
 
 img {
@@ -63,6 +67,12 @@ img {
   aspect-ratio: 1 / 1;
   height: 120px;
   width: 120px;
+
+  @media (min-width: 900px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .property-details {

@@ -11,3 +11,5 @@ export type Card = Pick<
   | 'AantalKamers'
   | 'Foto'
 >;
+
+export type SortBy = 'newest' | 'priceAsc' | 'priceDesc' | 'areaDesc';

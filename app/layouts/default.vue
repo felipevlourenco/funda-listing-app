@@ -20,6 +20,7 @@ const route = useRoute();
 main {
   padding: 1rem;
   max-width: 1200px;
+  margin: 0px auto;
 }
 
 header {

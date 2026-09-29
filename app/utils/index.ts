@@ -1,3 +1,5 @@
+import type { SortBy } from '~/types';
+
 export function formatPrice({
   price = 0,
   locale,
@@ -40,4 +42,51 @@ export function getPropertyLocation({
 }): [number, number] {
   // Return the coordinates as [latitude, longitude]
   return [property?.WGS84_Y || 0, property?.WGS84_X || 0];
+}
+
+export function sortProperties({
+  properties,
+  sortBy,
+}: {
+  properties: PropertyObject[];
+  sortBy: SortBy;
+}): PropertyObject[] {
+  const sortedProperties = [...properties];
+
+  switch (sortBy) {
+    case 'priceAsc':
+      return sortedProperties.sort(
+        (a, b) => a.Prijs.Koopprijs - b.Prijs.Koopprijs,
+      );
+    case 'priceDesc':
+      return sortedProperties.sort(
+        (a, b) => b.Prijs.Koopprijs - a.Prijs.Koopprijs,
+      );
+    case 'areaDesc':
+      return sortedProperties.sort(
+        (a, b) => b.Woonoppervlakte - a.Woonoppervlakte,
+      );
+    case 'newest':
+    default:
+      return sortedProperties.sort(
+        (a, b) =>
+          new Date(b.PublicatieDatum).getTime() -
+          new Date(a.PublicatieDatum).getTime(),
+      );
+  }
+}
+
+export function getSortByLabel(sortBy: SortBy): string {
+  switch (sortBy) {
+    case 'newest':
+      return 'Newest';
+    case 'priceAsc':
+      return 'Price: Low to High';
+    case 'priceDesc':
+      return 'Price: High to Low';
+    case 'areaDesc':
+      return 'Area: High to Low';
+    default:
+      return '';
+  }
 }
