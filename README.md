@@ -7,7 +7,7 @@ A Nuxt 4 app that lists homes for sale and shows a detail page for each one, wit
 ## Requirements
 
 - Node.js 20.19 or newer
-- [Yarn](https://yarnpkg.com/) (classic, v1)
+- [Yarn](https://yarnpkg.com/)
 
 ## Install
 
